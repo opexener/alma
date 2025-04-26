@@ -1,0 +1,58 @@
+# Test your FastAPI endpoints
+
+# Root endpoint
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+###
+
+# Authentication - Get token
+POST http://127.0.0.1:8000/token
+Content-Type: application/x-www-form-urlencoded
+
+username=attorney&password=password
+
+###
+
+# Get all leads (authenticated)
+GET http://127.0.0.1:8000/leads/
+Accept: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+# Get leads filtered by state (authenticated)
+GET http://127.0.0.1:8000/leads/?state=PENDING
+Accept: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+# Get specific lead (authenticated)
+GET http://127.0.0.1:8000/leads/1
+Accept: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+###
+
+# Update lead state (authenticated)
+PUT http://127.0.0.1:8000/leads/1
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN_HERE
+
+{
+  "state": "REACHED_OUT"
+}
+
+###
+
+# Note: For testing the lead submission endpoint with file upload,
+# you'll need to use a tool like Postman or curl, as HTTP files don't
+# support multipart/form-data well.
+# 
+# Example curl command:
+# curl -X POST http://127.0.0.1:8000/leads/ \
+#   -F "first_name=John" \
+#   -F "last_name=Doe" \
+#   -F "email=john.doe@example.com" \
+#   -F "resume=@/path/to/resume.pdf"
