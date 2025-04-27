@@ -106,3 +106,6 @@ API documentation is available at:
 - Implement proper email server configuration
 - Add rate limiting to prevent abuse
 - Consider adding CORS protection
+
+## Demo Link
+It is hosted on: http://alma.shahr.am/
